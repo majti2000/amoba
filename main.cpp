@@ -1,6 +1,5 @@
-//#include "graphics.hpp"
 #include "widgets.hpp"
-#include "examplecheckbox.hpp"
+#include "negyzet.hpp"
 #include "pont.hpp"
 #include <vector>
 #include <sstream>
@@ -57,11 +56,7 @@ void fut (vector<Widget*>& widgets) {
                             && find(w_feher.begin(), w_feher.end(), widgets[m-1])!=w_feher.end()
                             && find(w_feher.begin(), w_feher.end(), widgets[m-2])!=w_feher.end()){
                                 feher_pont++;
-                                for (int torl=0; torl < w_feher.size(); torl++){
-                                    if (w_feher[torl]==widgets[m]){
-                                        w_feher[torl]=widgets[widgets.size()];
-                                }
-                                }
+                                
                             }
                         
                         if (find(w_feher.begin(), w_feher.end(), widgets[m+15])!=w_feher.end() 
@@ -69,11 +64,7 @@ void fut (vector<Widget*>& widgets) {
                            && find(w_feher.begin(), w_feher.end(), widgets[m-15])!=w_feher.end()
                            && find(w_feher.begin(), w_feher.end(), widgets[m-30])!=w_feher.end()){
                               feher_pont++;
-                              for (int torl=0; torl < w_feher.size(); torl++){
-                                    if (w_feher[torl]==widgets[m+15]){
-                                        w_feher[torl]=widgets[widgets.size()];
-                                }
-                              }
+                              
                         }
                     }
                 
@@ -96,27 +87,12 @@ void fut (vector<Widget*>& widgets) {
                            && find(w_sarga.begin(), w_sarga.end(), widgets[m-15])!=w_sarga.end()
                            && find(w_sarga.begin(), w_sarga.end(), widgets[m-30])!=w_sarga.end()){
                             sarga_pont++;
-                              for (int torl=0; torl < w_sarga.size(); torl++){
-                                    if (w_sarga[torl]==widgets[m+15]){
-                                        w_sarga[torl]=widgets[widgets.size()];
-                                }
-                              }
+                              
                         }
                     }
                 }
         }
-        stringstream ss;
-        ss<<feher_pont;
-        string feh_pont;
-        ss>>feh_pont;
-        widgets[widgets.size()-2]=new Pont(5,10,100,30,feh_pont);
-        widgets[widgets.size()-2]->draw();
-        stringstream sss;
-        sss<<sarga_pont;
-        string sarg_pont;
-        sss>>sarg_pont;
-        widgets[widgets.size()-1]=new Pont(295,10,100,30,sarg_pont);
-        widgets[widgets.size()-1]->draw();
+        
       gout << refresh;
     }
     
@@ -128,7 +104,7 @@ int main()
     vector<Widget*> w;
     for (int i=0; i < 15; i++){
         for (int j=0; j < 15; j++){
-        ExampleCheckBox * aij = new ExampleCheckBox (50+20*i, 50+20*j, 20, 20);
+        Negyzet * aij = new Negyzet (50+19*i, 50+19*j, 20, 20);
         w.push_back(aij);
         }
     }

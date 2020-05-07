@@ -1,17 +1,16 @@
-#include "examplecheckbox.hpp"
+#include "negyzet.hpp"
 #include "graphics.hpp"
 using namespace genv;
 
-ExampleCheckBox::ExampleCheckBox(int x, int y, int sx, int sy)
+Negyzet::Negyzet(int x, int y, int sx, int sy)
     : Widget(x,y,sx,sy)
 {
     _checked=false;
-//    _checked2=false;
 }
 
-void ExampleCheckBox::draw()
+void Negyzet::draw()
 {
-    gout << move_to(_x, _y) << color(255,255,255) << box(_size_x, _size_y);
+    gout << move_to(_x, _y) << color(180,180,180) << box(_size_x, _size_y);
     gout << move_to(_x+2, _y+2) << color(0,0,0) << box(_size_x-4, _size_y-4);
     if (_checked) {
         gout << color(255,255,255);
@@ -22,7 +21,7 @@ void ExampleCheckBox::draw()
     }
 }
 
-void ExampleCheckBox::draw_mas()
+void Negyzet::draw_mas()
 {
     gout << move_to(_x, _y) << color(255,255,255) << box(_size_x, _size_y);
     gout << move_to(_x+2, _y+2) << color(0,0,0) << box(_size_x-4, _size_y-4);
@@ -35,27 +34,18 @@ void ExampleCheckBox::draw_mas()
     }
 }
 
-void ExampleCheckBox::handle(event ev)
+void Negyzet::handle(event ev)
 {
     if (ev.type == ev_key && (ev.keycode == key_enter || ev.keycode == ' ')) {
             _checked = false;
     }
     if (ev.type == ev_mouse && kival(ev.pos_x, ev.pos_y) && ev.button==btn_left) {
         _checked = true;
-      //  _checked2 = true;
 
     }
 }
-bool ExampleCheckBox::is_checked() 
+bool Negyzet::is_checked() 
 {
     return _checked;
 }
 
-
-
-/* bool ExampleCheckBox::is_checked2()
-{
-    _checked2=true;
-    return _checked2;
-}
-*/
