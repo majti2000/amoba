@@ -7,7 +7,6 @@ using namespace std;
 Pont::Pont(int x, int y, int sx, int sy, string pontt)
     : Widget(x,y,sx,sy), pontok(pontt)
 {
-   // pont=0;
 }
 
 void Pont::draw()
@@ -27,11 +26,3 @@ void Pont::handle(event ev)
 
 }
 
-/*string Pont::pont_ad()
-{
-    pont++;
-    stringstream ss;
-    ss<<pont;
-    ss>>pontok;
-    return pontok;
-}*/

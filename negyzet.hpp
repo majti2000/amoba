@@ -22,7 +22,6 @@ public:
     void set_status(statusok s) { status = s; }
     statusok get_status() { return status; }
     virtual void draw();
-    virtual void draw_mas();
     virtual void handle(genv::event ev);
     virtual bool is_checked() ;
 

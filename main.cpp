@@ -24,7 +24,6 @@ private:
 public: 
     void ram_katt(int x, int y)
     {
-        // printf("katt %d:%d\n", x, y);
         if (tabla[x][y] == 0)
         {
             if (feher_jatszik)
@@ -39,11 +38,39 @@ public:
             }
             feher_jatszik = !feher_jatszik;
             pont_frissites();
+            std:: cout << feher_pont;
         }
     }
     void pont_frissites()
     {
-        printf("frissitsd a pontot, RITA <3 \n");
+        if (feher_jatszik){
+            for (int i=0; i < tabla.size(); i++){
+                for (int j=0; j < tabla.size(); j++){
+                    if(tabla[i][j]==feher){
+                        if (tabla[i+1][j]==feher && tabla[i+2][j]==feher && tabla[i-1][j]==feher && tabla[i-2][j]==feher || 
+                            tabla[i+1][j+1]==feher && tabla[i+2][j+2]==feher && tabla[i-1][j-1]==feher && tabla[i-2][j-2]==feher ||
+                            tabla[i][j+1]==feher && tabla[i][j+2]==feher && tabla[i][j-1]==feher && tabla[i][j-2]==feher ||
+                            tabla[i-1][j+1]==feher && tabla[i-2][j+2]==feher && tabla[i+1][j-1]==feher && tabla[i+2][j-2]==feher){
+                                feher_pont++;
+                        }  
+                    }
+                }
+            }
+        }
+        else {
+            for (int i=0; i < tabla.size(); i++){
+                for (int j=0; j < tabla.size(); j++){
+                    if (tabla[i][j]==sarga){
+                        if (tabla[i+1][j]==sarga && tabla[i+2][j]==sarga && tabla[i-1][j]==sarga && tabla[i-2][j]==sarga || 
+                            tabla[i+1][j+1]==sarga && tabla[i+2][j+2]==sarga && tabla[i-1][j-1]==sarga && tabla[i-2][j-2]==sarga||
+                            tabla[i][j+1]==sarga && tabla[i][j+2]==sarga && tabla[i][j-1]==sarga && tabla[i][j-2]==sarga ||
+                            tabla[i-1][j+1]==sarga && tabla[i-2][j+2]==sarga && tabla[i+1][j-1]==sarga && tabla[i+2][j-2]==sarga){
+                                sarga_pont++;
+                        }  
+                    }
+                }
+            }
+        }
     }
     Amoba() 
     {

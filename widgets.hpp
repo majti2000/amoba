@@ -12,7 +12,6 @@ public:
     virtual void draw() = 0;
     virtual void handle(genv::event ev) = 0;
     virtual bool kival(int a, int b);
-    virtual void draw_mas()=0;
 };
 
 #endif 
