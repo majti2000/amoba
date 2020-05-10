@@ -15,7 +15,9 @@ class Amoba : public Applikacio
 {
 private: 
     vector<vector<int>> tabla;
+    //vector<vector<int>> kapott_pontot;
     vector<vector<Negyzet*>> tabla_kep;
+    vector<vector<int>> ellenorzo;
     bool feher_jatszik = true;
     int feher_pont=0;
     int sarga_pont=0;
@@ -37,40 +39,39 @@ public:
                 tabla_kep[x][y]->set_status(sarga);
             }
             feher_jatszik = !feher_jatszik;
+            betelt();
             pont_frissites();
-            std:: cout << feher_pont;
+            //std:: cout << feher_pont;
+        }
+    }
+    void betelt()
+    {
+        int ikszeltek=0;
+        for (int i=0; i < tabla_kep.size(); i++){
+            for (int j=0; j < tabla_kep.size(); j++){
+                if(tabla_kep[i][j]->get_status()!=ures){
+                    ikszeltek++;
+                }
+            }
+        }
+        if (ikszeltek==225){
+            for (int i=0; i < tabla.size(); i++){
+                for (int j=0; j < tabla.size(); j++){
+                    tabla[i][j]=ures;
+                    tabla_kep[i][j]->set_status(ures);
+                }
+            }
         }
     }
     void pont_frissites()
     {
-        if (feher_jatszik){
-            for (int i=0; i < tabla.size(); i++){
-                for (int j=0; j < tabla.size(); j++){
-                    if(tabla[i][j]==feher){
-                        if (tabla[i+1][j]==feher && tabla[i+2][j]==feher && tabla[i-1][j]==feher && tabla[i-2][j]==feher || 
-                            tabla[i+1][j+1]==feher && tabla[i+2][j+2]==feher && tabla[i-1][j-1]==feher && tabla[i-2][j-2]==feher ||
-                            tabla[i][j+1]==feher && tabla[i][j+2]==feher && tabla[i][j-1]==feher && tabla[i][j-2]==feher ||
-                            tabla[i-1][j+1]==feher && tabla[i-2][j+2]==feher && tabla[i+1][j-1]==feher && tabla[i+2][j-2]==feher){
-                                feher_pont++;
-                        }  
-                    }
+        /*for (int i=0; i < tabla.size()-4; i++){
+            for (int j=0; j < tabla.size()-4; j++){
+                if (tabla[i][j]==feher){
+                    if (tabla[i][j+1] && tab)
                 }
             }
-        }
-        else {
-            for (int i=0; i < tabla.size(); i++){
-                for (int j=0; j < tabla.size(); j++){
-                    if (tabla[i][j]==sarga){
-                        if (tabla[i+1][j]==sarga && tabla[i+2][j]==sarga && tabla[i-1][j]==sarga && tabla[i-2][j]==sarga || 
-                            tabla[i+1][j+1]==sarga && tabla[i+2][j+2]==sarga && tabla[i-1][j-1]==sarga && tabla[i-2][j-2]==sarga||
-                            tabla[i][j+1]==sarga && tabla[i][j+2]==sarga && tabla[i][j-1]==sarga && tabla[i][j-2]==sarga ||
-                            tabla[i-1][j+1]==sarga && tabla[i-2][j+2]==sarga && tabla[i+1][j-1]==sarga && tabla[i+2][j-2]==sarga){
-                                sarga_pont++;
-                        }  
-                    }
-                }
-            }
-        }
+        }*/
     }
     Amoba() 
     {
