@@ -15,12 +15,12 @@ class Amoba : public Applikacio
 {
 private: 
     vector<vector<int>> tabla;
-    //vector<vector<int>> kapott_pontot;
     vector<vector<Negyzet*>> tabla_kep;
-    vector<vector<int>> ellenorzo;
     bool feher_jatszik = true;
     int feher_pont=0;
     int sarga_pont=0;
+    int xx=0; 
+    int yy=0;
     Pont * feherpont;
     Pont * sargapont;
 public: 
@@ -39,9 +39,8 @@ public:
                 tabla_kep[x][y]->set_status(sarga);
             }
             feher_jatszik = !feher_jatszik;
-            betelt();
             pont_frissites();
-            //std:: cout << feher_pont;
+            betelt();
         }
     }
     void betelt()
@@ -65,13 +64,44 @@ public:
     }
     void pont_frissites()
     {
-        /*for (int i=0; i < tabla.size()-4; i++){
-            for (int j=0; j < tabla.size()-4; j++){
+        for (int i=4; i < tabla.size()-4; i++){
+            for (int j=4; j < tabla.size()-4; j++){
                 if (tabla[i][j]==feher){
-                    if (tabla[i][j+1] && tab)
+                    if (tabla[i][j+1]==feher && tabla[i][j+2]==feher && tabla[i][j+3]==feher && tabla[i][j+4]==feher){
+                        feher_pont++;
+                    }
+                    if (tabla[i+1][j+1]==feher && tabla[i+2][j+2]==feher && tabla[i+3][j+3]==feher && tabla[i+4][j+4]==feher){
+                        feher_pont++;
+                    }
+                    if (tabla[i+1][j]==feher && tabla[i+2][j]==feher && tabla[i+3][j]==feher && tabla[i+4][j]==feher){
+                        feher_pont++;
+                    }
+                    if (tabla[i+1][j-1]==feher && tabla[i+2][j-2]==feher && tabla[i+3][j-3]==feher && tabla[i+4][j-4]==feher){
+                        feher_pont++;
+                    }
+                    cout << feher_pont << endl;
+                }
+                if (tabla[i][j]==sarga){
+                    if (tabla[i][j+1]==sarga && tabla[i][j+2]==sarga && tabla[i][j+3]==sarga && tabla[i][j+4]==sarga){
+                        sarga_pont++;
+                    }
+                    if (tabla[i+1][j+1]==sarga && tabla[i+2][j+2]==sarga && tabla[i+3][j+3]==sarga && tabla[i+4][j+4]==sarga){
+                        sarga_pont++;
+                    }
+                    if (tabla[i+1][j]==sarga && tabla[i+2][j]==sarga && tabla[i+3][j]==sarga && tabla[i+4][j]==sarga){
+                        sarga_pont++;
+                    }
+                    if (tabla[i+1][j-1]==sarga && tabla[i+2][j-2]==sarga && tabla[i+3][j-3]==sarga && tabla[i+4][j-4]==sarga){
+                        sarga_pont++;
+                    }
+                    cout << sarga_pont << endl;
                 }
             }
-        }*/
+        }
+        feherpont->poont=feher_pont;
+        sargapont->poont=sarga_pont;
+        feherpont->atalakit(feher_pont);
+        sargapont->atalakit(sarga_pont);
     }
     Amoba() 
     {
@@ -84,9 +114,9 @@ public:
                 widgets.push_back(aij);
             }
         }
-        feherpont =new Pont(5,10,100,30,"0");
+        feherpont =new Pont(5,10,100,30);
         widgets.push_back(feherpont);
-        sargapont =new Pont(295,10,100,30,"0");
+        sargapont =new Pont(295,10,100,30);
         widgets.push_back(sargapont);
     }
 

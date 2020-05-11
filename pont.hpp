@@ -7,10 +7,11 @@
 class Pont : public Widget {
 protected:
 public:
-    string pontok;
-    Pont (int x, int y, int sx, int sy, string pontt);
+    int poont;
+    Pont (int x, int y, int sx, int sy);
     virtual void draw();
-    virtual void draw_mas();
+    virtual string atalakit(int pontok);
+    virtual int pon_vissza();
     virtual void handle(genv::event ev);
 };
 
